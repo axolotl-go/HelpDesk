@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class userController
@@ -19,8 +20,17 @@ class userController
             );
         }
 
+        $data = $users->map(function ($user) {
+            return [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role,
+            ];
+        });
+
         return response()->json(
-            $users,
+            $data,
             200
         );
     }
@@ -47,8 +57,8 @@ class userController
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
-            'role' => $request->role,
+            'password' => Hash::make($request->password),
+            'role' =>  $request->role,
         ]);
 
 
