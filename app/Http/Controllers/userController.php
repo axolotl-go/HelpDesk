@@ -58,7 +58,7 @@ class userController
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' =>  $request->role,
+            'role' => $request->role,
         ]);
 
 
@@ -77,4 +77,63 @@ class userController
 
         return response($data, 201);
     }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            $data = [
+                'message' => 'User not found',
+                'status' => 404,
+            ];
+            return response($data, 404);
+        }
+
+        $data = [
+            'user' => $user,
+            'status' => 200,
+        ];
+
+        return response($data, 200);
+    }
+
+    public function login(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Error to validate data',
+                'errors' => $validator->errors(),
+                'status' => 400,
+            ], 400);
+        }
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found',
+                'status' => 404,
+            ], 404);
+        }
+
+        if (!Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'message' => 'Invalid password',
+                'status' => 401,
+            ], 401);
+        }
+
+        return response()->json([
+            'message' => 'Login success',
+            'user' => $user,
+            'status' => 200,
+        ], 200);
+    }
+
 }
