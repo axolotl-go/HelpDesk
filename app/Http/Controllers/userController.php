@@ -16,7 +16,7 @@ class userController
         if ($users->isEmpty()) {
             return response()->json(
                 ['message' => 'No hay usuarios'],
-                200
+                404
             );
         }
 
