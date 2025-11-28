@@ -16,6 +16,8 @@ body .login-container{
     background-color: rgba(79, 79, 79, 0.1);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(254, 254, 254, 0.1);
+    transition: 0.5s;
+    transform: translateY(-20px);
 }
 
 .login-container h1{
@@ -38,13 +40,24 @@ body .login-container{
     border-radius: 4px;
     box-sizing: border-box;
 }
+.login-container form input[type="text"]:hover , .login-container form input[type="password"]:hover{
+    border: 1px solid #000000;
+    transition: 0.2s;
+}
+
 
 .login-container form button{
     width: 100%;
     padding: 10px;
+    margin-top: 10px;
     background-color: #4CAF50;
-    color: white;
+    color: #FFFFFF;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+.login-container form button:hover{
+    background-color: #053705;
+    color: #000000;
+    transition: 0.3s;
 }
