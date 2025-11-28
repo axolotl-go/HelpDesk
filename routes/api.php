@@ -1,21 +1,22 @@
 <?php
 
+use App\Http\Controllers\ticketController;
 use App\Http\Controllers\userController;
-use App\Http\Controllers\categoryController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
 // Users
 Route::get("/users", [userController::class, 'index']);
-
-Route::Get('user/{id}', [userController::class, 'show']);
-
+Route::get('user/{id}', [userController::class, 'show']);
 Route::post("/user", [userController::class, 'store']);
+Route::delete("/user/{id}", [userController::class, 'destroy']);
 
 // login
 Route::post("/login", [userController::class, 'login']);
 
-
-// Categories
-Route::get("/categories", [categoryController::class, 'index']);
+// Tickets
+Route::get("/tickets", [ticketController::class, 'index']);
+Route::get("/ticket/{id}", [ticketController::class, 'show']);
+Route::post("/ticket", [ticketController::class, 'store']);
+Route::put("/ticket/{id}", [ticketController::class, 'update']);
+Route::delete("/ticket/{id}", [ticketController::class, 'destroy']);
