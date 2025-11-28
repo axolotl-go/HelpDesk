@@ -18,6 +18,7 @@ body {
     color: black;
     padding: 16px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .sidebar a.active {
@@ -28,6 +29,13 @@ body {
 .sidebar a:hover:not(.active) {
     background-color: #555;
     color: white;
+}
+
+.logo {
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 div.content {
