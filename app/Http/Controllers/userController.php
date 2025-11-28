@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +26,7 @@ class userController
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
+                'phone' => $user->phone,
                 'role' => $user->role,
             ];
         });
@@ -41,8 +43,9 @@ class userController
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email',
+            'phone' => 'required|string|max:15',
             'password' => 'required|string|max:255',
-            'role' => 'required|in:admin,agent,client',
+            'role' => 'in:admin,agent,client',
         ]);
 
         if ($validator->fails()) {
@@ -57,6 +60,7 @@ class userController
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
@@ -135,5 +139,26 @@ class userController
             'status' => 200,
         ], 200);
     }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response([
+                'message' => 'User not found',
+                'status' => 404,
+            ], 404);
+        }
+
+        Ticket::where('user_id', $id)->delete();
+        $user->delete();
+
+        return response([
+            'message' => 'User deleted',
+            'status' => 200,
+        ], 200);
+    }
+
 
 }

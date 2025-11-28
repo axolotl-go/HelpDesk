@@ -13,11 +13,8 @@ class User extends Model
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'role',
-    ];
-
-    protected $attributes = [
-        'role' => 'client',
     ];
 }
