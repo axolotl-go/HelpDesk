@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class ticketController
 {
@@ -43,6 +43,39 @@ class ticketController
         return response($ticket, 201);
     }
 
+    public function getTicketsByRole(Request $request)
+    {
+        $role = $request->role;
+        $userId = $request->user_id;
+
+        switch ($role) {
+
+            case 'admin':
+                $tickets = Ticket::all();
+                return response([
+                    'role' => 'admin',
+                    'tickets' => $tickets,
+                    'status' => 200
+                ], 200);
+
+            case 'client':
+                $tickets = Ticket::where('user_id', $userId)->get();
+                return response([
+                    'role' => 'client',
+                    'tickets' => $tickets,
+                    'status' => 200
+                ], 200);
+
+            default:
+                return response([
+                    'message' => 'Invalid role',
+                    'status' => 400
+                ], 400);
+        }
+    }
+
+
+
     public function show($id)
     {
         $ticket = Ticket::find($id);
@@ -58,6 +91,7 @@ class ticketController
         $ticket->user = [
             'name' => $user->name,
             'email' => $user->email,
+            'role' => $user->role,
         ];
 
         return response($ticket);

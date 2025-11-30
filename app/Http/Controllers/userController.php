@@ -94,14 +94,58 @@ class userController
             return response($data, 404);
         }
 
+        $tickets = Ticket::where('user_id', $id)->get();
+
         $data = [
             'user' => $user,
+            'tickets' => $tickets,
             'status' => 200,
         ];
 
         return response($data, 200);
     }
 
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response([
+                'message' => 'User not found',
+                'status' => 404,
+            ], 404);
+        }
+
+        $user->update($request->all());
+
+        return response([
+            'message' => 'User updated',
+            'user' => $user,
+            'status' => 200,
+        ], 200);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response([
+                'message' => 'User not found',
+                'status' => 404,
+            ], 404);
+        }
+
+        Ticket::where('user_id', $id)->delete();
+        $user->delete();
+
+        return response([
+            'message' => 'User deleted',
+            'status' => 200,
+        ], 200);
+    }
+
+    // login
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -139,26 +183,4 @@ class userController
             'status' => 200,
         ], 200);
     }
-
-    public function destroy($id)
-    {
-        $user = User::find($id);
-
-        if (!$user) {
-            return response([
-                'message' => 'User not found',
-                'status' => 404,
-            ], 404);
-        }
-
-        Ticket::where('user_id', $id)->delete();
-        $user->delete();
-
-        return response([
-            'message' => 'User deleted',
-            'status' => 200,
-        ], 200);
-    }
-
-
 }
