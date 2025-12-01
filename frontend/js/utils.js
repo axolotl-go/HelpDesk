@@ -41,6 +41,19 @@ export const fetchApiPut = async (url, body) => {
     }
 };
 
+export const fetchApiDelete = async (url) => {
+    try {
+        const res = await fetch(url, {
+            method: "DELETE",
+        });
+
+        return await res.json();
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+};
+
 export const localStorageSet = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
 };
