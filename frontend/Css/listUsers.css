@@ -1,0 +1,278 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f3f3;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 260px;
+    border-right: 1px solid #d4d4d4;
+    background: #1e1e1e;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 24px;
+    border-bottom: 1px solid #333;
+}
+
+.sidebar-header h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+.user-box {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    border-top: 1px solid #ddd;
+    background: #3a3a3a;
+}
+
+.usuario {
+    background: #2563eb;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.user-info p {
+    margin: 0;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.role {
+    font-size: 12px;
+    color: gray;
+}
+.sidebar-nav {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-item,
+.nav-button {
+    width: 80%;
+    padding: 12px 15px;
+    border: none;
+    background: none;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.nav-item:hover,
+.nav-button:hover {
+    background: #333;
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
+/* Activo */
+.nav-item.active {
+    background: #3a3a3a;
+    color: #fff;
+}
+
+/* Button Primario  */
+.primary {
+    background: #007bff;
+    color: white;
+}
+
+.primary:hover {
+    background: #0069d9;
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #333;
+}
+
+.logout:hover {
+    background: #333;
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
+/* Icons */
+i {
+    width: 20px;
+    height: 20px;
+}
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+}
+
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.header p {
+    margin: 4px 0 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 12px 10px 35px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 18px;
+    width: 18px;
+    color: #6b7280;
+}
+
+.users-grid {
+    padding: 25px;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.user-card {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    transition: 0.2s;
+}
+
+.user-card:hover {
+    background: #f3f4f6;
+}
+
+.user-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.badges {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.badge {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+}
+
+.admin {
+    background: #ef4444;
+    color: white;
+}
+
+.agent {
+    background: #3b82f6;
+    color: white;
+}
+
+.user {
+    background: #6b7280;
+    color: white;
+}
+
+.active {
+    background: #22c55e;
+    color: white;
+}
+
+.inactive {
+    background: #9ca3af;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.empty {
+    padding: 50px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 18px;
+}
