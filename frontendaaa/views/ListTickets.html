@@ -1,0 +1,44 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tickets List</title>
+        <link rel="stylesheet" href="../Css/ListTickets.css" />
+
+        <script src="https://unpkg.com/lucide@latest"></script>
+    </head>
+    <body>
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Helpdesk</h1>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="/" class="nav-item">
+                    <i data-lucide="home"></i>
+                    Home
+                </a>
+
+                <a href="./Ticket.html" class="nav-item active">
+                    <i data-lucide="list-todo"></i>
+                    Tickets
+                </a>
+
+                <button class="nav-button primary">
+                    <i data-lucide="plus"></i>
+                    Nuevo Ticket
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="nav-item logout">
+                    <i data-lucide="log-out"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <script>
+            lucide.createIcons();
+        </script>
+    </body>
+</html>
