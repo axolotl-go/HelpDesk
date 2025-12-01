@@ -1,5 +1,11 @@
 import { nav } from "./elements.js";
-import { $, fetchApi, fetchApiPut, formatTime } from "./utils.js";
+import {
+    $,
+    fetchApi,
+    fetchApiPut,
+    fetchApiDelete,
+    formatTime,
+} from "./utils.js";
 import { API_URL } from "./api.js";
 
 const ticketId = $("ticketId");
@@ -7,6 +13,7 @@ const ticketTitle = $("ticketTitle");
 const ticketDescription = $("ticketDescription");
 const ticketStatus = $("ticketStatus");
 const ticketUserName = $("ticketUserName");
+const deleteTicketButton = $("deleteTicketButton");
 const status = $("status");
 
 $("nav").innerHTML = nav;
@@ -33,9 +40,7 @@ if (ticket) {
     ticketUserName.textContent = ticket.user.name + " / " + ticket.user.email;
 }
 
-const closeTicket = async (e) => {
-    e.preventDefault();
-
+const closeTicket = async () => {
     const response = await fetchApiPut(API_URL + "/ticket/" + id, {
         status: "completed",
     });
@@ -52,3 +57,15 @@ if (ticket.status === "completed") {
 }
 
 $("closeTicket").addEventListener("click", closeTicket);
+
+const deleteTicket = async () => {
+    const response = await fetchApiDelete(API_URL + "/ticket/" + id);
+
+    console.log(response);
+
+    if (response) {
+        window.location.href = "../views/dashboard.html";
+    }
+};
+
+$("deleteTicketButton").addEventListener("click", deleteTicket);
