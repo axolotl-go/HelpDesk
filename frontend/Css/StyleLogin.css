@@ -1,38 +1,39 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
 }
 
-body{
-    background-color: rgb(87, 144, 137);
+body {
+    background-color: #f3f3f3;
 }
 
-body .login-container{
+body .login-container {
     font-family: Arial, sans-serif;
     width: 300px;
     margin: auto;
     margin-top: 100px;
     padding: 20px;
-    background-color: rgba(79, 79, 79, 0.1);
+    background-color: rgb(102, 102, 102);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(254, 254, 254, 0.1);
     transition: 0.5s;
     transform: translateY(-20px);
 }
 
-.login-container h1{
+.login-container h1 {
     text-align: center;
     margin-bottom: 20px;
-} 
+}
 
-.login-container form label{
+.login-container form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     text-align: center;
 }
 
-.login-container form input[type="text"], .login-container form input[type="password"]{
+.login-container form input[type="text"],
+.login-container form input[type="password"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -40,23 +41,23 @@ body .login-container{
     border-radius: 4px;
     box-sizing: border-box;
 }
-.login-container form input[type="text"]:hover , .login-container form input[type="password"]:hover{
+.login-container form input[type="text"]:hover,
+.login-container form input[type="password"]:hover {
     border: 1px solid #000000;
     transition: 0.2s;
 }
 
-
-.login-container form button{
+.login-container form button {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
-    background-color: #4CAF50;
-    color: #FFFFFF;
+    background-color: #2563eb;
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
-.login-container form button:hover{
+.login-container form button:hover {
     background-color: #053705;
     color: #000000;
     transition: 0.3s;

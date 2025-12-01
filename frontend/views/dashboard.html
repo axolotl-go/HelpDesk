@@ -1,148 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="../Css/dashboard.css">
-</head>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="../Css/dashboard.css" />
+        <script src="https://unpkg.com/lucide@latest"></script>
+    </head>
 
-<body>
+    <body>
+        <div class="layout">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h1>Helpdesk</h1>
+                </div>
+                <div class="user-box">
+                    <div class="avatar">
+                        <span>MG</span>
+                    </div>
+                    <div class="user-info">
+                        <p class="name">María García</p>
+                        <p class="role">Administrador</p>
+                    </div>
+                </div>
 
-  <div class="layout">
+                <nav class="sidebar-nav">
+                    <a href="/" class="nav-item active">
+                        <i data-lucide="home"></i>
+                        Home
+                    </a>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <h1>Helpdesk</h1>
-      </div>
+                    <a href="/" class="nav-item">
+                        <i data-lucide="list-todo"></i>
+                        Tickets
+                    </a>
 
-      <nav class="sidebar-nav">
-        <a href="#" class="nav-btn active">
-          <span class="icon">🏠</span>
-          Home
-        </a>
+                    <button class="nav-button primary">
+                        <i data-lucide="plus"></i>
+                        Nuevo Ticket
+                    </button>
+                </nav>
 
-        <a href="#" class="nav-btn">
-          <span class="icon">🎫</span>
-          Tickets
-        </a>
+                <div class="sidebar-footer">
+                    <button class="nav-item logout">
+                        <i data-lucide="log-out"></i>
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </aside>
 
-        <button class="new-ticket-btn">
-          <span class="icon">➕</span>
-          Nuevo Ticket
-        </button>
-      </nav>
+            <!-- CONTENIDO PRINCIPAL -->
+            <main class="main-content">
+                <div class="container">
+                    <!-- Título -->
+                    <div class="header">
+                        <h1>Dashboard</h1>
+                        <p>Resumen de tickets y actividad reciente</p>
+                    </div>
 
-      <div class="sidebar-footer">
-        <button class="logout-btn">
-          <span class="icon">🚪</span>
-          Cerrar Sesión
-        </button>
-      </div>
-    </aside>
+                    <!-- TARJETAS DE ESTADÍSTICAS -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div>
+                                <p class="stat-title">Total Tickets</p>
+                                <p class="stat-value">248</p>
+                            </div>
+                            <div class="stat-icon primary">
+                                <i data-lucide="ticket"></i>
+                            </div>
+                        </div>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="main-content">
-      <div class="container">
+                        <div class="stat-card">
+                            <div>
+                                <p class="stat-title">Resueltos</p>
+                                <p class="stat-value">186</p>
+                            </div>
+                            <div class="stat-icon green">
+                                <i data-lucide="ticket-check"></i>
+                            </div>
+                        </div>
 
-        <!-- Título -->
-        <div class="header">
-          <h1>Dashboard</h1>
-          <p>Resumen de tickets y actividad reciente</p>
+                        <div class="stat-card">
+                            <div>
+                                <p class="stat-title">En Progreso</p>
+                                <p class="stat-value">42</p>
+                            </div>
+                            <div class="stat-icon yellow">
+                                <i data-lucide="ticket-minus"></i>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div>
+                                <p class="stat-title">Urgentes</p>
+                                <p class="stat-value">20</p>
+                            </div>
+                            <div class="stat-icon red">
+                                <i data-lucide="tag"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TICKETS RECIENTES -->
+                    <div class="card tickets-card">
+                        <h2>Tickets Recientes</h2>
+
+                        <div class="ticket">
+                            <div>
+                                <div class="ticket-header">
+                                    <span class="ticket-id">TKT-1245</span>
+                                    <span class="status urgent">Urgente</span>
+                                </div>
+                                <h3>Error en login de usuarios</h3>
+                                <p>Asignado a: Carlos Mendez</p>
+                            </div>
+                            <span class="ticket-time">Hace 10 min</span>
+                        </div>
+
+                        <div class="ticket">
+                            <div>
+                                <div class="ticket-header">
+                                    <span class="ticket-id">TKT-1244</span>
+                                    <span class="status in-progress"
+                                        >En Progreso</span
+                                    >
+                                </div>
+                                <h3>Solicitud de nuevo feature</h3>
+                                <p>Asignado a: Ana García</p>
+                            </div>
+                            <span class="ticket-time">Hace 1 hora</span>
+                        </div>
+
+                        <div class="ticket">
+                            <div>
+                                <div class="ticket-header">
+                                    <span class="ticket-id">TKT-1243</span>
+                                    <span class="status open">Abierto</span>
+                                </div>
+                                <h3>Bug en reporte mensual</h3>
+                                <p>Asignado a: Luis Torres</p>
+                            </div>
+                            <span class="ticket-time">Hace 2 horas</span>
+                        </div>
+
+                        <div class="ticket">
+                            <div>
+                                <div class="ticket-header">
+                                    <span class="ticket-id">TKT-1242</span>
+                                    <span class="status resolved"
+                                        >Resuelto</span
+                                    >
+                                </div>
+                                <h3>Actualización de base de datos</h3>
+                                <p>Asignado a: María López</p>
+                            </div>
+                            <span class="ticket-time">Hace 3 horas</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-
-        <!-- TARJETAS DE ESTADÍSTICAS -->
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div>
-              <p class="stat-title">Total Tickets</p>
-              <p class="stat-value">248</p>
-            </div>
-            <div class="stat-icon primary">📊</div>
-          </div>
-
-          <div class="stat-card">
-            <div>
-              <p class="stat-title">Resueltos</p>
-              <p class="stat-value">186</p>
-            </div>
-            <div class="stat-icon green">✔️</div>
-          </div>
-
-          <div class="stat-card">
-            <div>
-              <p class="stat-title">En Progreso</p>
-              <p class="stat-value">42</p>
-            </div>
-            <div class="stat-icon yellow">⏳</div>
-          </div>
-
-          <div class="stat-card">
-            <div>
-              <p class="stat-title">Urgentes</p>
-              <p class="stat-value">20</p>
-            </div>
-            <div class="stat-icon red">⚠️</div>
-          </div>
-        </div>
-
-        <!-- TICKETS RECIENTES -->
-        <div class="card tickets-card">
-          <h2>Tickets Recientes</h2>
-
-          <div class="ticket">
-            <div>
-              <div class="ticket-header">
-                <span class="ticket-id">TKT-1245</span>
-                <span class="status urgent">Urgente</span>
-              </div>
-              <h3>Error en login de usuarios</h3>
-              <p>Asignado a: Carlos Mendez</p>
-            </div>
-            <span class="ticket-time">Hace 10 min</span>
-          </div>
-
-          <div class="ticket">
-            <div>
-              <div class="ticket-header">
-                <span class="ticket-id">TKT-1244</span>
-                <span class="status in-progress">En Progreso</span>
-              </div>
-              <h3>Solicitud de nuevo feature</h3>
-              <p>Asignado a: Ana García</p>
-            </div>
-            <span class="ticket-time">Hace 1 hora</span>
-          </div>
-
-          <div class="ticket">
-            <div>
-              <div class="ticket-header">
-                <span class="ticket-id">TKT-1243</span>
-                <span class="status open">Abierto</span>
-              </div>
-              <h3>Bug en reporte mensual</h3>
-              <p>Asignado a: Luis Torres</p>
-            </div>
-            <span class="ticket-time">Hace 2 horas</span>
-          </div>
-
-          <div class="ticket">
-            <div>
-              <div class="ticket-header">
-                <span class="ticket-id">TKT-1242</span>
-                <span class="status resolved">Resuelto</span>
-              </div>
-              <h3>Actualización de base de datos</h3>
-              <p>Asignado a: María López</p>
-            </div>
-            <span class="ticket-time">Hace 3 horas</span>
-          </div>
-
-        </div>
-
-      </div>
-    </main>
-  </div>
-
-</body>
+        <script>
+            lucide.createIcons();
+        </script>
+    </body>
 </html>
