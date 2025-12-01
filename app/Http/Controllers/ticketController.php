@@ -108,9 +108,14 @@ class ticketController
             ], 404);
         }
 
-        $ticket->update($request->all());
+        // Solo un campo
+        if ($request->has('status')) {
+            $ticket->status = $request->status;
+        }
 
-        return response($ticket, 200);
+        $ticket->save();
+
+        return response()->json($ticket, 200);
     }
 
     public function destroy($id)

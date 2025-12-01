@@ -177,9 +177,17 @@ class userController
             ], 401);
         }
 
+        $user->password = null;
+
         return response()->json([
             'message' => 'Login success',
-            'user' => $user,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'role' => $user->role,
+            ],
             'status' => 200,
         ], 200);
     }
