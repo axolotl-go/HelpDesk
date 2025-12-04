@@ -191,4 +191,21 @@ class userController
             'status' => 200,
         ], 200);
     }
+
+
+    public function graphTickets()
+    {
+        $tickets = Ticket::all();
+
+        $completed = $tickets->where('status', 'completed')->count();
+        $pending = $tickets->where('status', 'pending')->count();
+
+        return response()->json([
+            'all' => $tickets->count(),
+            'completed' => $completed,
+            'pending' => $pending,
+            'status' => 200,
+        ], 200);
+    }
+
 }

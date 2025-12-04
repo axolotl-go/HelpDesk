@@ -21,3 +21,6 @@ Route::post("/getTicketsByRole", [ticketController::class, 'getTicketsByRole']);
 Route::post("/ticket", [ticketController::class, 'store']);
 Route::put("/ticket/{id}", [ticketController::class, 'update']);
 Route::delete("/ticket/{id}", [ticketController::class, 'destroy']);
+
+// graph
+Route::get("/graph", [userController::class, 'graphTickets']);

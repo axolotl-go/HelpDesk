@@ -1,6 +1,7 @@
 import { API_URL } from "./api.js";
 import {
     $,
+    fetchApi,
     fetchApiPost,
     localStorageGet,
     localStorageRemove,
@@ -36,7 +37,7 @@ welcome.textContent = `Bienvenido ${user.name}`;
 
 const res = await fetchApiPost(API_URL + "/getTicketsByRole", {
     role: user.role,
-    id: user.id,
+    user_id: user.id,
 });
 
 if (res?.tickets?.length > 0) {
@@ -47,9 +48,29 @@ if (res?.tickets?.length > 0) {
     });
 }
 
+console.log(res);
+
 ticketsCard.addEventListener("click", (e) => {
     const card = e.target.closest(".ticket");
     if (!card) return;
 
     window.location.href = `/frontend/views/Ticket.html?id=${card.id}`;
 });
+
+
+
+// graficos
+
+const graph = await fetchApi(API_URL + "/graph");
+console.log(graph);
+
+const totalTickets = $("totalTickets");
+const completedTickets = $("completedTickets");
+const pendingTickets = $("pendingTickets");
+
+
+if (graph) {
+    totalTickets.textContent = graph.all;
+    completedTickets.textContent = graph.completed;
+    pendingTickets.textContent = graph.pending;
+}
