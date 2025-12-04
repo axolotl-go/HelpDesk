@@ -45,11 +45,17 @@ class ticketController
 
     public function getTicketsByRole(Request $request)
     {
-        $role = $request->role;
-        $userId = $request->user_id;
+        $role = $request->input('role');
+        $userId = $request->input('user_id');
+
+        if (!$role) {
+            return response([
+                'message' => 'Role is required',
+                'status' => 400
+            ], 400);
+        }
 
         switch ($role) {
-
             case 'admin':
                 $tickets = Ticket::all();
                 return response([
@@ -59,6 +65,12 @@ class ticketController
                 ], 200);
 
             case 'client':
+                if (!$userId) {
+                    return response([
+                        'message' => 'User ID is required for client role',
+                        'status' => 400
+                    ], 400);
+                }
                 $tickets = Ticket::where('user_id', $userId)->get();
                 return response([
                     'role' => 'client',
