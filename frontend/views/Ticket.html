@@ -1,10 +1,10 @@
+<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <title>Ticket</title>
+        <title>Ticket Details</title>
+        <link rel="stylesheet" href="../Css/global.css" />
         <link rel="stylesheet" href="../Css/Ticket.css" />
-
-        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
         <aside class="sidebar">
@@ -51,104 +51,42 @@
             </div>
         </aside>
         <div class="container">
-            <!-- Encabezado -->
             <div class="top-bar">
                 <a href="listTickets.html" class="btn-ghost">
                     <i data-lucide="arrow-left"></i>
                     Volver a Tickets
                 </a>
                 <div class="actions">
-                    <button class="btn-outline">Editar</button>
-                    <button class="btn-primary">Cerrar Ticket</button>
+                    <button class="btn-outline" id="deleteTicketButton">
+                        Eliminar
+                    </button>
+                    <button class="btn-primary" id="closeTicket">
+                        Cerrar Ticket
+                    </button>
                 </div>
             </div>
 
-            <!-- Título del ticket -->
             <div class="header-info">
                 <div>
-                    <p class="ticket-id">Ticket #1234</p>
-                    <h1>Error en el sistema de autenticación</h1>
+                    <p class="ticket-id" id="ticketId"></p>
+                    <p id="ticketUserName"></p>
+                    <h1 id="ticketTitle"></h1>
                 </div>
 
-                <div class="badges">
-                    <span class="badge status progress">En Progreso</span>
-                    <span class="badge priority high">
-                        <i data-lucide="alert-circle"></i> Alta
-                    </span>
+                <div id="status" class="badge status progress">
+                    <i data-lucide="clock"></i>
+                    <span id="ticketStatus"></span>
                 </div>
             </div>
 
-            <!-- Descripción -->
             <div class="card">
                 <h2>Descripción</h2>
-                <p>
-                    Los usuarios reportan que no pueden iniciar sesión en el
-                    sistema. El error aparece después de ingresar las
-                    credenciales correctas. Se muestra un mensaje de "Error
-                    500".
-                </p>
-            </div>
-
-            <!-- Bloques de información -->
-            <div class="grid">
-                <!-- Información del ticket -->
-                <div class="card">
-                    <h2>Información del Ticket</h2>
-
-                    <div class="info-row">
-                        <i data-lucide="user"></i>
-                        <div>
-                            <p class="label">Asignado a</p>
-                            <p class="value">María García</p>
-                        </div>
-                    </div>
-
-                    <div class="info-row">
-                        <i data-lucide="user"></i>
-                        <div>
-                            <p class="label">Reportado por</p>
-                            <p class="value">Juan Pérez</p>
-                        </div>
-                    </div>
-
-                    <div class="info-row">
-                        <i data-lucide="calendar"></i>
-                        <div>
-                            <p class="label">Fecha de creación</p>
-                            <p class="value">2024-01-15</p>
-                        </div>
-                    </div>
-
-                    <div class="info-row">
-                        <i data-lucide="clock"></i>
-                        <div>
-                            <p class="label">Última actualización</p>
-                            <p class="value">2024-01-16</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría y detalles -->
-                <div class="card">
-                    <h2>Categoría y Detalles</h2>
-
-                    <div class="detail-item">
-                        <p class="label">Categoría</p>
-                        <span class="badge category">Técnico</span>
-                    </div>
-
-                    <div class="detail-item">
-                        <p class="label">Prioridad</p>
-                        <span class="badge priority high">Alta</span>
-                    </div>
-
-                    <div class="detail-item">
-                        <p class="label">Estado</p>
-                        <span class="badge status progress">En Progreso</span>
-                    </div>
-                </div>
+                <p id="ticketDescription"></p>
             </div>
         </div>
+
+        <script type="module" src="../js/ticket.js"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
         <script>
             lucide.createIcons();
         </script>

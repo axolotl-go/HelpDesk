@@ -17,6 +17,7 @@ Route::post("/login", [userController::class, 'login']);
 // Tickets
 Route::get("/tickets", [ticketController::class, 'index']);
 Route::get("/ticket/{id}", [ticketController::class, 'show']);
+Route::post("/getTicketsByRole", [ticketController::class, 'getTicketsByRole']);
 Route::post("/ticket", [ticketController::class, 'store']);
 Route::put("/ticket/{id}", [ticketController::class, 'update']);
 Route::delete("/ticket/{id}", [ticketController::class, 'destroy']);
