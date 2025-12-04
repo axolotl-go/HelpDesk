@@ -60,7 +60,17 @@ class ticketController
                 $tickets = Ticket::all();
                 return response([
                     'role' => 'admin',
-                    'tickets' => $tickets,
+                    'tickets' => $tickets->map(function ($ticket) {
+                        $user = User::where('id', $ticket->user_id)->first();
+                        return [
+                            'id' => $ticket->id,
+                            'title' => $ticket->title,
+                            'description' => $ticket->description,
+                            'status' => $ticket->status,
+                            'created_at' => $ticket->created_at,
+                            'user' => $user,
+                        ];
+                    }),
                     'status' => 200
                 ], 200);
 

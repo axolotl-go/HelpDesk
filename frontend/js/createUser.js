@@ -1,6 +1,18 @@
 import { fetchApiPost, $, localStorageGet, localStorageSet } from "./utils.js";
 import { API_URL } from "./api.js";
 
+let user = localStorageGet("user");
+
+try {
+    user = typeof user === "string" ? JSON.parse(user) : user;
+} catch (e) {
+    console.error("Error parseando user:", e);
+}
+
+if (!user) {
+    window.location.href = "/frontend/views/Login.html";
+}
+
 $("createUserForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 

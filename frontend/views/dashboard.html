@@ -9,49 +9,7 @@
     <body>
         <div class="layout">
             <!-- SIDEBAR -->
-            <aside class="sidebar">
-                <div class="sidebar-header">
-                    <h1>Helpdesk</h1>
-                </div>
-                <div class="user-box">
-                    <div class="avatar">
-                        <span>MG</span>
-                    </div>
-                    <div class="user-info">
-                        <p class="name">María García</p>
-                        <p class="role">Administrador</p>
-                    </div>
-                </div>
-
-                <nav class="sidebar-nav">
-                    <a href="./dashboard.html" class="nav-item active">
-                    <i data-lucide="home"></i>
-                    Home
-                </a>
-
-                <a href="./Ticket.html" class="nav-item">
-                    <i data-lucide="list-todo"></i>
-                    Tickets
-                </a>
-
-                <a href="./listUsers.html" class="nav-item">
-                    <i data-lucide="user"></i>
-                    Usuarios
-                </a>
-
-                    <button class="nav-button primary">
-                        <i data-lucide="plus"></i>
-                        Nuevo Ticket
-                    </button>
-                </nav>
-
-                <div class="sidebar-footer">
-                    <button class="nav-item logout">
-                        <i data-lucide="log-out"></i>
-                        Cerrar Sesión
-                    </button>
-                </div>
-            </aside>
+            <aside id="nav" class="sidebar"></aside>
 
             <!-- CONTENIDO PRINCIPAL -->
             <main class="main-content">
@@ -67,7 +25,7 @@
                         <div class="stat-card">
                             <div>
                                 <p class="stat-title">Total Tickets</p>
-                                <p class="stat-value" id="totalTickets"></p>
+                                <p class="stat-value" id="totalTickets">0</p>
                             </div>
                             <div class="stat-icon primary">
                                 <i data-lucide="bar-chart-2"></i>
@@ -77,7 +35,9 @@
                         <div class="stat-card">
                             <div>
                                 <p class="stat-title">Resueltos</p>
-                                <p class="stat-value" id="completedTickets"></p>
+                                <p class="stat-value" id="completedTickets">
+                                    0
+                                </p>
                             </div>
                             <div class="stat-icon green">
                                 <i data-lucide="check"></i>
@@ -87,7 +47,7 @@
                         <div class="stat-card">
                             <div>
                                 <p class="stat-title">En Progreso</p>
-                                <p class="stat-value" id="pendingTickets"></p>
+                                <p class="stat-value" id="pendingTickets">0</p>
                             </div>
                             <div class="stat-icon yellow">
                                 <i data-lucide="clock"></i>
@@ -96,9 +56,8 @@
                     </div>
 
                     <!-- TICKETS RECIENTES -->
-                    <div class="">
+                    <div>
                         <h2>Tickets Recientes</h2>
-
                         <div class="tickets-card" id="tickets-card"></div>
                     </div>
                 </div>
@@ -106,8 +65,8 @@
         </div>
 
         <!-- LUCIDE & SCRIPTS -->
-        <script src="https://unpkg.com/lucide@latest"></script>
         <script type="module" src="../Js/dashboard.js"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
         <script>
             lucide.createIcons();
         </script>

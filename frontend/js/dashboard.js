@@ -7,9 +7,10 @@ import {
     localStorageRemove,
     createCard,
 } from "./utils.js";
-import { nav } from "./elements.js";
+import { nav, initSidebar } from "./elements.js";
 
 $("nav").innerHTML = nav;
+initSidebar();
 const logoutBtn = $("logoutBtn");
 const welcome = $("welcome");
 const ticketsCard = $("tickets-card");
@@ -48,16 +49,12 @@ if (res?.tickets?.length > 0) {
     });
 }
 
-console.log(res);
-
 ticketsCard.addEventListener("click", (e) => {
     const card = e.target.closest(".ticket");
     if (!card) return;
 
     window.location.href = `/frontend/views/Ticket.html?id=${card.id}`;
 });
-
-
 
 // graficos
 
@@ -67,7 +64,6 @@ console.log(graph);
 const totalTickets = $("totalTickets");
 const completedTickets = $("completedTickets");
 const pendingTickets = $("pendingTickets");
-
 
 if (graph) {
     totalTickets.textContent = graph.all;

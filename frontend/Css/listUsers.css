@@ -6,120 +6,12 @@ body {
     flex-direction: row;
 }
 
-.sidebar {
-    width: 260px;
-    border-right: 1px solid #d4d4d4;
-    background: #1e1e1e;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar-header {
-    padding: 24px;
-    border-bottom: 1px solid #333;
-}
-
-.sidebar-header h1 {
-    font-size: 20px;
-    font-weight: bold;
-}
-.user-box {
-    display: flex;
-    gap: 12px;
-    padding: 16px;
-    border-top: 1px solid #ddd;
-    background: #3a3a3a;
-}
-
-.usuario {
-    background: #2563eb;
-    color: white;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
-
-.user-info p {
-    margin: 0;
-}
-
-.name {
-    font-weight: bold;
-}
-
-.role {
-    font-size: 12px;
-    color: gray;
-}
-.sidebar-nav {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.nav-item,
-.nav-button {
-    width: 80%;
-    padding: 12px 15px;
-    border: none;
-    background: none;
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-.nav-item:hover,
-.nav-button:hover {
-    background: #333;
-    transition: 0.3s;
-    transform: scale(1.05);
-}
-
-/* Activo */
-.nav-item.active {
-    background: #3a3a3a;
-    color: #fff;
-}
-
-/* Button Primario  */
-.primary {
-    background: #007bff;
-    color: white;
-}
-
-.primary:hover {
-    background: #0069d9;
-    transition: 0.3s;
-    transform: scale(1.05);
-}
-.sidebar-footer {
-    padding: 20px;
-    border-top: 1px solid #333;
-}
-
-.logout:hover {
-    background: #333;
-    transition: 0.3s;
-    transform: scale(1.05);
-}
-
 /* Icons */
 i {
     width: 20px;
     height: 20px;
 }
+
 .container {
     flex: 1;
     display: flex;
@@ -174,7 +66,7 @@ i {
     border-radius: 6px;
 }
 
-.icon {
+.icon-user {
     position: absolute;
     left: 10px;
     top: 10px;
