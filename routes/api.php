@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get("/users", [userController::class, 'index']);
 Route::get('user/{id}', [userController::class, 'show']);
 Route::post("/user", [userController::class, 'store']);
+Route::put('/user/{id}', [userController::class, 'update']);
 Route::delete("/user/{id}", [userController::class, 'destroy']);
 
 // login

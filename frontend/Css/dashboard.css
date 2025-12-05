@@ -44,7 +44,6 @@ i {
     color: #555;
 }
 
-/* --- STAT CARDS (modo claro mantiene contraste) --- */
 .stats-grid {
     margin-top: 32px;
     margin-bottom: 32px;
@@ -99,8 +98,6 @@ i {
 .stat-icon.red {
     color: #ef4444;
 }
-
-/* --- TICKETS RECIENTES --- */
 
 .card {
     background: white;

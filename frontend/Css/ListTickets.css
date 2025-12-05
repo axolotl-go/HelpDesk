@@ -28,19 +28,32 @@ i {
     padding: 32px;
 }
 
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .header h1 {
     margin: 0;
-    font-size: 32px;
-    font-weight: 600;
-    color: #111;
+    font-weight: bold;
 }
 
 .header p {
-    margin-top: 4px;
-    color: #555;
+    margin: 4px 0 0;
+    color: #6b7280;
+    font-size: 14px;
 }
 
-/* --- LISTA DE TICKETS (estilo de arriba) --- */
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
 .ticket-container {
     padding: 32px;

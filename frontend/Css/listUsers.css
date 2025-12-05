@@ -16,8 +16,11 @@ i {
     flex: 1;
     display: flex;
     flex-direction: column;
-    height: 100vh;
     padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+    background: #f3f3f3;
+    color: #333;
 }
 
 .header {
@@ -88,6 +91,8 @@ i {
     border-radius: 10px;
     border: 1px solid #e5e7eb;
     transition: 0.2s;
+    text-decoration: none;
+    color: inherit;
 }
 
 .user-card:hover {
@@ -138,23 +143,8 @@ i {
     color: white;
 }
 
-.agent {
+.client {
     background: #3b82f6;
-    color: white;
-}
-
-.user {
-    background: #6b7280;
-    color: white;
-}
-
-.active {
-    background: #22c55e;
-    color: white;
-}
-
-.inactive {
-    background: #9ca3af;
     color: white;
 }
 

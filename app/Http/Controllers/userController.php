@@ -192,7 +192,6 @@ class userController
         ], 200);
     }
 
-
     public function graphTickets()
     {
         $tickets = Ticket::all();

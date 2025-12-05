@@ -42,9 +42,9 @@ const res = await fetchApiPost(API_URL + "/getTicketsByRole", {
 });
 
 if (res?.tickets?.length > 0) {
-    res.tickets.forEach((t) => {
+    res.tickets.forEach((ticket) => {
         ticketsCard.appendChild(
-            createCard(t.id, t.title, t.description, t.status, t.updated_at)
+            createCard(ticket.id, ticket.title, ticket.description, ticket.status, ticket.created_at)
         );
     });
 }

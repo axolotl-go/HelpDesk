@@ -1,4 +1,6 @@
-import { localStorageRemove } from "./utils.js";
+import { localStorageRemove, localStorageGet } from "./utils.js";
+
+const user = localStorageGet("user");
 
 export const nav = `
 <style>
@@ -227,14 +229,11 @@ i {
         <span class="icon"><i data-lucide="ticket"></i></span> Tickets
     </a>
 
-    <a href="../views/listUsers.html" class="nav-btn">
-        <span class="icon"><i data-lucide="user"></i></span> Usuarios
-    </a>
 
-    <button class="new-ticket-btn" type="button">
-        <span class="icon"><i data-lucide="plus"></i></span>
-        Nuevo Ticket
-    </button>
+    ${user.role === "admin" ? `<a href="../views/listUsers.html" class="nav-btn">
+        <span class="icon"><i data-lucide="user"></i></span> Usuarios
+    </a>` : ""}
+
 </nav>
 
 <div class="sidebar-footer">
@@ -284,5 +283,190 @@ export function initSidebar() {
                 overlay.classList.remove("active");
             }
         });
+    });
+}
+
+export const modalTicket = `
+<style>
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal h2 {
+    margin: 0 0 12px;
+    font-size: 24px;
+}
+
+.modal p {
+    margin: 0 0 24px;
+    font-size: 14px;
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: #eee;
+}
+
+.btn-submit {
+    background: #007bff;
+    color: white;
+}
+
+</style>
+
+<div class="modal-overlay" id="ticketModalOverlay">
+    <div class="modal">
+        <h2>Crear Nuevo Ticket</h2>
+        <p>Completa el formulario para crear un nuevo ticket de soporte.</p>
+
+        <form id="ticketForm">
+            <div class="form-group">
+                <label for="ticketTitle">Título</label>
+                <input id="ticketTitle" type="text" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ticketDescription">Descripción</label>
+                <textarea id="ticketDescription" rows="4" required></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" id="cancelTicketBtn">Cancelar</button>
+                <button type="submit" class="btn btn-submit">Crear Ticket</button>
+            </div>
+        </form>
+    </div>
+</div>
+`;
+
+
+export function openTicketModal() {
+    document.querySelector("#ticketModalOverlay")?.classList.add("active");
+}
+
+export function closeTicketModal() {
+    document.querySelector("#ticketModalOverlay")?.classList.remove("active");
+}
+export function initTicketModal() {
+    const modal = document.querySelector("#ticketModalOverlay");
+    const cancelBtn = document.querySelector("#cancelTicketBtn");
+    const form = document.querySelector("#ticketForm");
+
+    // Cerrar al hacer clic fuera del modal
+    modal?.addEventListener("click", (e) => {
+        if (e.target === modal) closeTicketModal();
+    });
+
+    // Botón cancelar
+    cancelBtn?.addEventListener("click", closeTicketModal);
+
+    // Submit
+    form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const data = {
+            title: form.querySelector("#ticketTitle").value.trim(),
+            description: form.querySelector("#ticketDescription").value.trim(),
+            status: "pending",
+            user_id: localStorageGet("user")?.id ?? null,
+        };
+
+        if (!data.title || !data.description) {
+            alert("Completa todos los campos.");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:8000/api/ticket", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error("Error en el servidor");
+            }
+
+            const result = await response.json();
+            console.log("Ticket creado:", result);
+
+            alert("Ticket creado correctamente");
+
+        } catch (err) {
+            console.error(err);
+            alert("Error al crear el ticket");
+        }
+
+        form.reset();
+        closeTicketModal();
     });
 }

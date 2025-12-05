@@ -5,9 +5,6 @@ import { API_URL } from "./api.js";
 $("nav").innerHTML = nav;
 initSidebar();
 
-if (window.lucide) {
-    lucide.createIcons();
-}
 
 let user = localStorageGet("user");
 
@@ -47,12 +44,16 @@ if (res?.tickets?.length > 0) {
                   <div class="ticket-right">
                       <div class="time">
                           <i data-lucide="clock"></i>
-                          <span>${formatTime(ticket.created_at)}</span>
-                      </div>
-                      <div class="avatar">
-                          <span>${ticket.user?.name || ""}</span>
-                      </div>
+                          <span>${formatTime(ticket.updated_at || ticket.created_at)}</span>
+                          </div>
+                          <span>${ticket?.user?.email || ""}</span>
                   </div>`;
         ticketsContainer.appendChild(ticketElement);
     });
+}
+
+
+
+if (window.lucide) {
+    lucide.createIcons();
 }
