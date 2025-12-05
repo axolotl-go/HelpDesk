@@ -101,7 +101,6 @@ class userController
             'tickets' => $tickets,
             'status' => 200,
         ];
-
         return response($data, 200);
     }
 

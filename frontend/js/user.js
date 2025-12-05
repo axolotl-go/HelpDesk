@@ -61,6 +61,13 @@ $("editUserButton").addEventListener("click", editUser);
 
 const ticketsContainer = $("tickets");
 
+ticketsContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("ticket")) {
+        const ticketId = e.target.id;
+        window.location.href = `../views/ticket.html?id=${ticketId}`;
+    }
+});
+
 const res = await fetchApi(API_URL + "/user/" + id);
 
 if (res?.tickets?.length > 0) {

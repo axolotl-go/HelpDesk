@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Editar Usuario</title>
+        <link rel="stylesheet" href="../Css/User.css" />
+    </head>
+    <body>
+        <aside id="nav" class="sidebar"></aside>
+
+        <div class="container">
+            <div class="top-bar">
+                <a href="../views/listUsers.html" class="btn-ghost">
+                    <i data-lucide="arrow-left"></i>
+                    Volver a usuarios
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>Editar Usuario</h2>
+
+                <form id="editUserForm">
+                    <label for="name">Nombre</label>
+                    <input id="name" type="text" required />
+
+                    <label for="email">Email</label>
+                    <input id="email" type="email" required />
+
+                    <label for="phone">Teléfono</label>
+                    <input id="phone" type="text" />
+
+                    <label for="role">Rol</label>
+                    <select id="role">
+                        <option value="admin">Admin</option>
+                        <option value="client">Client</option>
+                    </select>
+
+                    <button class="btn-primary" type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script type="module" src="../js/editUser.js"></script>
+    </body>
+</html>
