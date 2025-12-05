@@ -1,3 +1,5 @@
+import { localStorageRemove } from "./utils.js";
+
 export const nav = `
 <style>
 .layout {
@@ -13,9 +15,11 @@ export const nav = `
     flex-direction: column;
     color: #fff;
     transition: transform 0.3s ease;
+    z-index: 999;
 }
 
 .sidebar-header {
+    z-index: 999;
     padding: 24px;
     border-bottom: 1px solid #333;
     display: flex;
@@ -50,6 +54,7 @@ export const nav = `
     display: flex;
     flex-direction: column;
     gap: 12px;
+    z-index: 999;
 }
 
 .nav-btn,
@@ -59,6 +64,7 @@ export const nav = `
     padding: 12px 15px;
     border: none;
     background: none;
+    z-index: 999;
     color: #fff;
     text-align: left;
     text-decoration: none;
@@ -69,11 +75,6 @@ export const nav = `
     cursor: pointer;
     font-size: 15px;
     transition: 0.2s;
-}
-
-.nav-btn:hover,
-.new-ticket-btn:hover,
-.logout-btn:hover {
     background: #333;
     transform: scale(1.05);
 }
@@ -93,6 +94,7 @@ export const nav = `
 }
 
 .sidebar-footer {
+    z-index: 999;
     padding: 20px;
     border-top: 1px solid #333;
 }
@@ -112,15 +114,17 @@ i {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
+    z-index: 999;
 }
 
 .hamburger-btn {
     display: none;
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 997;
+    top: 10px;
+    left: 85%;
+    width: 50px;
+    height: 50px;
+    z-index: 999;
     background: #007bff;
     border: none;
     color: white;
@@ -147,6 +151,8 @@ i {
 
     .sidebar-overlay.active {
         display: block;
+        height: 100vh;
+        width: 100vw;
     }
 
     .menu-toggle {
@@ -178,6 +184,7 @@ i {
     }
 
     .sidebar-nav {
+   
         padding: 15px;
         gap: 8px;
     }
@@ -201,18 +208,18 @@ i {
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <button class="hamburger-btn" id="hamburgerBtn">
-    <i data-lucide="menu"></i>
 </button>
 
 <div class="sidebar-header">
     <h1>Helpdesk</h1>
     <button class="menu-toggle" id="menuToggle">
-        <i data-lucide="x"></i>
+        
     </button>
 </div>
 
 <nav class="sidebar-nav">
-    <a href="../views/dashboard.html" class="nav-btn active">
+
+    <a href="../views/dashboard.html" class="nav-btn">
         <span class="icon"><i data-lucide="home"></i></span> Home
     </a>
 
