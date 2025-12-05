@@ -3,212 +3,30 @@
         <meta charset="UTF-8" />
         <title>Usuarios</title>
         <link rel="stylesheet" href="../Css/listUsers.css" />
-
-        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1>Helpdesk</h1>
-            </div>
-            <div class="user-box">
-                <div class="usuario">
-                    <span>MG</span>
-                </div>
-                <div class="user-info">
-                    <p class="name">María García</p>
-                    <p class="role">Administrador</p>
-                </div>
-            </div>
+            <aside id="nav" class="sidebar"></aside>
 
-            <nav class="sidebar-nav">
-                <a href="./dashboard.html" class="nav-item">
-                    <i data-lucide="home"></i>
-                    Home
-                </a>
-
-                <a href="./listTickets.html" class="nav-item">
-                    <i data-lucide="list-todo"></i>
-                    Tickets
-                </a>
-
-                <a href="./listUsers.html" class="nav-item active">
-                    <i data-lucide="user"></i>
-                    Usuarios
-                </a>
-
-                <button class="nav-item primary" onclick="openModal()">
-                    <i data-lucide="plus"></i>Nuevo Ticket
-                </button>
-            </nav>
-
-            <div class="sidebar-footer">
-                <button class="nav-item logout">
-                    <i data-lucide="log-out"></i>
-                    Cerrar Sesión
-                </button>
-            </div>
-        </aside>
-
-        <div class="container">
-            <div class="header">
-                <div>
-                    <h1>Usuarios</h1>
-                    <p>Gestiona los usuarios del sistema</p>
-                </div>
-                <button class="btn-primary">Nuevo Usuario</button>
-            </div>
-
-            <div class="filters">
-                <div class="search-box">
-                    <i data-lucide="search" class="icon"></i>
-                    <input
-                        id="searchInput"
-                        type="text"
-                        placeholder="Buscar por nombre o email..."
-                    />
+            <div class="container">
+                <div class="header">
+                    <div>
+                        <h1>Usuarios</h1>
+                        <p>Gestiona los usuarios del sistema</p>
+                    </div>
+                    <button class="btn-primary">Nuevo Usuario</button>
                 </div>
 
-                <select id="roleFilter">
-                    <option value="all">Todos los roles</option>
-                    <option value="admin">Administrador</option>
-                    <option value="agent">Agente</option>
-                    <option value="user">Usuario</option>
-                </select>
+               <div id="usersGrid" class="users-grid"></div>
 
-                <select id="statusFilter">
-                    <option value="all">Todos</option>
-                    <option value="active">Activo</option>
-                    <option value="inactive">Inactivo</option>
-                </select>
-            </div>
 
-            <div id="usersGrid" class="users-grid">
-                <!-- Usuario 1 -->
-                <div
-                    class="user-card"
-                    data-role="admin"
-                    data-status="active"
-                    onclick="location.href='ticket.html'"
-                >
-                    <div class="user-top">
-                        <div class="avatar">MG</div>
-                        <div>
-                            <h3>María García</h3>
-                            <p>12 tickets asignados</p>
-                        </div>
-                    </div>
-
-                    <div class="info-row">
-                        <i data-lucide="mail"></i> maria.garcia@company.com
-                    </div>
-                    <div class="info-row">
-                        <i data-lucide="phone"></i> +34 612 345 678
-                    </div>
-
-                    <div class="badges">
-                        <span class="badge admin">Administrador</span>
-                        <span class="badge active">Activo</span>
-                    </div>
+                <div id="emptyMessage" class="empty hidden">
+                    No se encontraron usuarios
                 </div>
-
-                <!-- Usuario 2 -->
-                <div class="user-card" data-role="agent" data-status="active">
-                    <div class="user-top">
-                        <div class="avatar">CR</div>
-                        <div>
-                            <h3>Carlos Rodríguez</h3>
-                            <p>8 tickets asignados</p>
-                        </div>
-                    </div>
-
-                    <div class="info-row">
-                        <i data-lucide="mail"></i> carlos.rodriguez@company.com
-                    </div>
-                    <div class="info-row">
-                        <i data-lucide="phone"></i> +34 623 456 789
-                    </div>
-
-                    <div class="badges">
-                        <span class="badge agent">Agente</span>
-                        <span class="badge active">Activo</span>
-                    </div>
-                </div>
-
-                <!-- Usuario 3 -->
-                <div class="user-card" data-role="agent" data-status="active">
-                    <div class="user-top">
-                        <div class="avatar">AM</div>
-                        <div>
-                            <h3>Ana Martínez</h3>
-                            <p>15 tickets asignados</p>
-                        </div>
-                    </div>
-
-                    <div class="info-row">
-                        <i data-lucide="mail"></i> ana.martinez@company.com
-                    </div>
-                    <div class="info-row">
-                        <i data-lucide="phone"></i> +34 634 567 890
-                    </div>
-
-                    <div class="badges">
-                        <span class="badge agent">Agente</span>
-                        <span class="badge active">Activo</span>
-                    </div>
-                </div>
-
-                <!-- Usuario 4 -->
-                <div class="user-card" data-role="user" data-status="active">
-                    <div class="user-top">
-                        <div class="avatar">LF</div>
-                        <div>
-                            <h3>Luis Fernández</h3>
-                            <p>3 tickets asignados</p>
-                        </div>
-                    </div>
-
-                    <div class="info-row">
-                        <i data-lucide="mail"></i> luis.fernandez@company.com
-                    </div>
-                    <div class="info-row">
-                        <i data-lucide="phone"></i> +34 645 678 901
-                    </div>
-
-                    <div class="badges">
-                        <span class="badge user">Usuario</span>
-                        <span class="badge active">Activo</span>
-                    </div>
-                </div>
-
-                <!-- Usuario 5 -->
-                <div class="user-card" data-role="agent" data-status="inactive">
-                    <div class="user-top">
-                        <div class="avatar">ES</div>
-                        <div>
-                            <h3>Elena Sánchez</h3>
-                            <p>0 tickets asignados</p>
-                        </div>
-                    </div>
-
-                    <div class="info-row">
-                        <i data-lucide="mail"></i> elena.sanchez@company.com
-                    </div>
-                    <div class="info-row">
-                        <i data-lucide="phone"></i> +34 656 789 012
-                    </div>
-
-                    <div class="badges">
-                        <span class="badge agent">Agente</span>
-                        <span class="badge inactive">Inactivo</span>
-                    </div>
-                </div>
-            </div>
-
-            <div id="emptyMessage" class="empty hidden">
-                No se encontraron usuarios
             </div>
         </div>
+
+        <script type="module" src="../js/listUser.js"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
         <script>
             lucide.createIcons();
         </script>

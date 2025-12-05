@@ -1,153 +1,71 @@
+/* --- GENERAL --- */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f3f3f3;
+    color: #333;
+}
+
+.layout {
     display: flex;
-    flex-direction: row;
+    height: 100vh;
 }
 
-.sidebar {
-    width: 260px;
-    border-right: 1px solid #d4d4d4;
-    background: #1e1e1e;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar-header {
-    padding: 24px;
-    border-bottom: 1px solid #333;
-}
-
-.sidebar-header h1 {
-    font-size: 20px;
-    font-weight: bold;
-}
-.user-box {
-    display: flex;
-    gap: 12px;
-    padding: 16px;
-    border-top: 1px solid #ddd;
-    background: #3a3a3a;
-}
-
-.usuario {
-    background: #2563eb;
-    color: white;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
-
-.user-info p {
-    margin: 0;
-}
-
-.name {
-    font-weight: bold;
-}
-
-.role {
-    font-size: 12px;
-    color: gray;
-}
-.sidebar-nav {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.nav-item,
-.nav-button {
-    width: 80%;
-    padding: 12px 15px;
-    border: none;
-    background: none;
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-.nav-item:hover,
-.nav-button:hover {
-    background: #333;
-    transition: 0.3s;
-    transform: scale(1.05);
-}
-
-/* Activo */
-.nav-item.active {
-    background: #3a3a3a;
-    color: #fff;
-}
-
-/* Button Primario  */
-.primary {
-    background: #007bff;
-    color: white;
-}
-
-.primary:hover {
-    background: #0069d9;
-    transition: 0.3s;
-    transform: scale(1.05);
-}
-.sidebar-footer {
-    padding: 20px;
-    border-top: 1px solid #333;
-}
-
-.logout:hover {
-    background: #333;
-    transition: 0.3s;
-    transform: scale(1.05);
-}
-
-/* Icons */
+/* Iconos */
+.icon,
 i {
     width: 20px;
     height: 20px;
+    font-size: 18px;
 }
-.ticket-container {
-    padding: 40px;
+
+/* --- MAIN CONTENT --- */
+.main-content {
     flex: 1;
-    flex-direction: column;
+    overflow-y: auto;
+    background: #f3f3f3;
+    color: #333;
+    padding: 32px;
+}
+
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header h1 {
-    font-size: 32px;
     margin: 0;
+    font-weight: bold;
 }
 
 .header p {
-    color: #666;
-    margin-top: 4px;
+    margin: 4px 0 0;
+    color: #6b7280;
+    font-size: 14px;
 }
 
-/* Lista */
-.tickets {
-    margin-top: 30px;
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.ticket-container {
+    padding: 32px;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 14px;
 }
 
 /* Tarjeta */
 .ticket {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: #ffffff;
+    border: 1px solid #ccc;
     border-radius: 12px;
     padding: 20px;
     text-decoration: none;
@@ -156,20 +74,20 @@ i {
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
-    transition: border 0.2s ease;
-    transition: 0.3s;
+    transition: 0.2s;
+    margin-bottom: 14px;
 }
 
 .ticket:hover {
-    border-color: #5a5cff;
+    border-color: #007bff;
     transform: scale(1.02);
-    transition: 0.3s;
 }
 
 /* IZQUIERDA */
 .ticket-left h3 {
     margin: 6px 0;
     font-size: 18px;
+    color: #111;
 }
 
 .ticket-left p {
@@ -178,7 +96,7 @@ i {
     font-size: 14px;
 }
 
-/* Etiquetas */
+/* Labels */
 .labels {
     display: flex;
     gap: 8px;
@@ -191,63 +109,33 @@ i {
     font-family: "Courier New", monospace;
 }
 
-/* Status */
+/* --- STATUS (mismos tonos y contraste del diseño superior) --- */
+
 .status {
     font-size: 12px;
-    padding: 3px 6px;
+    padding: 4px 7px;
     border-radius: 6px;
-    border: 1px solid transparent;
+    border: 1px solid;
 }
 
-.status.open {
-    background: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
-    border-color: rgba(59, 130, 246, 0.2);
-}
-
-.status.in-progress {
-    background: rgba(234, 179, 8, 0.1);
+.status.pending {
     color: #eab308;
-    border-color: rgba(234, 179, 8, 0.2);
+    background: #fff7cc;
+    border-color: #f5e08a;
 }
 
-.status.resolved {
-    background: rgba(34, 197, 94, 0.1);
+.status.completed {
     color: #22c55e;
-    border-color: rgba(34, 197, 94, 0.2);
+    background: #d9ffe8;
+    border-color: #9effc5;
 }
 
-.status.closed {
-    background: rgba(107, 114, 128, 0.1);
-    color: #6b7280;
-    border-color: rgba(107, 114, 128, 0.2);
+.ticket-time {
+    color: #777;
+    font-size: 14px;
 }
 
-/* Prioridad */
-.priority {
-    font-size: 12px;
-    padding: 3px 6px;
-    border-radius: 6px;
-}
-
-.priority.low {
-    background: rgba(107, 114, 128, 0.1);
-    color: #9ca3af;
-}
-.priority.medium {
-    background: rgba(59, 130, 246, 0.1);
-    color: #60a5fa;
-}
-.priority.high {
-    background: rgba(249, 115, 22, 0.1);
-    color: #fb923c;
-}
-.priority.urgent {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-}
-
-/* DERECHA */
+/* --- DERECHA --- */
 .ticket-right {
     display: flex;
     align-items: center;

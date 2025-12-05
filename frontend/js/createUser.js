@@ -1,4 +1,4 @@
-import { fetchApiPost, $, localStorageGet, localStorageSet } from "./utils.js";
+import { fetchApiPost, $, localStorageSet } from "./utils.js";
 import { API_URL } from "./api.js";
 
 $("createUserForm").addEventListener("submit", async (e) => {

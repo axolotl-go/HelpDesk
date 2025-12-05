@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Ticket Details</title>
+        <link rel="stylesheet" href="../Css/User.css" />
+    </head>
+    <body>
+        <aside id="nav" class="sidebar"></aside>
+
+        <div class="container">
+            <div class="top-bar">
+                <a href="../views/listUsers.html" class="btn-ghost">
+                    <i data-lucide="arrow-left"></i>
+                    Volver a usuarios
+                </a>
+                <div class="actions">
+                    <button class="btn-outline" id="deleteUserButton">
+                        Eliminar
+                    </button>
+                    <button class="btn-primary" id="editUserButton">
+                        Editar
+                    </button>
+                </div>
+            </div>
+
+            <div class="header-info">
+                <div>
+                    <p id="userName"></p>
+                    <p id="phone"></p>
+                    <h1 id="userEmail"></h1>
+                </div>
+                <div>
+                    <p id="role"></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>tickets</h2>
+                <div id="tickets"></div>
+            </div>
+        </div>
+
+        <script type="module" src="../js/user.js"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+            lucide.createIcons();
+        </script>
+    </body>
+</html>

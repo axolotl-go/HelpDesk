@@ -7,9 +7,10 @@ import {
     localStorageRemove,
     createCard,
 } from "./utils.js";
-import { nav } from "./elements.js";
+import { nav, initSidebar } from "./elements.js";
 
 $("nav").innerHTML = nav;
+initSidebar();
 const logoutBtn = $("logoutBtn");
 const welcome = $("welcome");
 const ticketsCard = $("tickets-card");
@@ -41,14 +42,12 @@ const res = await fetchApiPost(API_URL + "/getTicketsByRole", {
 });
 
 if (res?.tickets?.length > 0) {
-    res.tickets.forEach((t) => {
+    res.tickets.forEach((ticket) => {
         ticketsCard.appendChild(
-            createCard(t.id, t.title, t.description, t.status, t.updated_at)
+            createCard(ticket.id, ticket.title, ticket.description, ticket.status, ticket.created_at)
         );
     });
 }
-
-console.log(res);
 
 ticketsCard.addEventListener("click", (e) => {
     const card = e.target.closest(".ticket");
@@ -56,8 +55,6 @@ ticketsCard.addEventListener("click", (e) => {
 
     window.location.href = `/frontend/views/Ticket.html?id=${card.id}`;
 });
-
-
 
 // graficos
 
@@ -67,7 +64,6 @@ console.log(graph);
 const totalTickets = $("totalTickets");
 const completedTickets = $("completedTickets");
 const pendingTickets = $("pendingTickets");
-
 
 if (graph) {
     totalTickets.textContent = graph.all;

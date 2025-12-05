@@ -3,176 +3,53 @@
         <meta charset="UTF-8" />
         <title>Lista de Tickets</title>
         <link rel="stylesheet" href="../Css/ListTickets.css" />
-
-        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
     <body>
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1>Helpdesk</h1>
-            </div>
-            <div class="user-box">
-                <div class="usuario">
-                    <span>MG</span>
+        <div class="layout">
+            <aside id="nav" class="sidebar"></aside>
+            <div id="modal"></div>
+
+            <div class="main-content">
+                <div class="header">
+                    <div>
+                        <h1>Tickets</h1>
+                        <p>
+                            Gestiona y monitorea todos los tickets del sistema
+                        </p>
+                    </div>
+                    <button class="btn-primary" id="newTicketBtn">
+                        Nuevo Ticket
+                    </button>
                 </div>
-                <div class="user-info">
-                    <p class="name">María García</p>
-                    <p class="role">Administrador</p>
-                </div>
-            </div>
 
-            <nav class="sidebar-nav">
-                <a href="./dashboard.html" class="nav-item">
-                    <i data-lucide="home"></i>
-                    Home
-                </a>
+                <div id="modal"></div>
 
-                <a href="./listTickets.html" class="nav-item active">
-                    <i data-lucide="list-todo"></i>
-                    Tickets
-                </a>
-
-                <a href="./listUsers.html" class="nav-item">
-                    <i data-lucide="user"></i>
-                    Usuarios
-                </a>
-
-                <button class="nav-item primary" onclick="openModal()">
-                    <i data-lucide="plus"></i>Nuevo Ticket
-                </button>
-            </nav>
-
-            <div class="sidebar-footer">
-                <button class="nav-item logout">
-                    <i data-lucide="log-out"></i>
-                    Cerrar Sesión
-                </button>
-            </div>
-        </aside>
-
-        <div class="ticket-container">
-            <div class="header">
-                <h1>Tickets</h1>
-                <p>Gestiona y monitorea todos los tickets del sistema</p>
-            </div>
-
-            <div class="tickets">
-                <!-- Ticket 1 -->
-                <a href="#" class="ticket">
-                    <div class="ticket-left">
-                        <div class="labels">
-                            <span class="ticket-id">TKT-001</span>
-                            <span class="status open">Abierto</span>
-                            <span class="priority high">Alta</span>
-                        </div>
-
-                        <h3>No puedo acceder a mi cuenta</h3>
-                        <p>Usuario reporta problemas de autenticación</p>
-                    </div>
-
-                    <div class="ticket-right">
-                        <div class="time">
-                            <i data-lucide="clock"></i>
-                            <span>2025-01-15</span>
-                        </div>
-
-                        <div class="avatar">
-                            <div class="avatar-fallback">MG</div>
-                            <span>María García</span>
-                        </div>
-                    </div>
-                </a>
-                <!-- Ticket 2 -->
-                <a href="#" class="ticket">
-                    <div class="ticket-left">
-                        <div class="labels">
-                            <span class="ticket-id">TKT-007</span>
-                            <span class="status in-progress">En Progreso</span>
-                            <span class="priority urgent">Urgente</span>
-                        </div>
-
-                        <h3>Error crítico al generar reportes</h3>
-                        <p>
-                            El sistema arroja un error 502 al intentar exportar
-                            el reporte mensual.
-                        </p>
-                    </div>
-
-                    <div class="ticket-right">
-                        <div class="time">
-                            <i data-lucide="clock"></i>
-                            <span>2025-01-16</span>
-                        </div>
-
-                        <div class="avatar">
-                            <div class="avatar-fallback">JP</div>
-                            <span>Juan Pérez</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Ticket 3 -->
-                <a href="#" class="ticket">
-                    <div class="ticket-left">
-                        <div class="labels">
-                            <span class="ticket-id">TKT-008</span>
-                            <span class="status resolved">Resuelto</span>
-                            <span class="priority low">Baja</span>
-                        </div>
-
-                        <h3>Corrección en texto de la interfaz</h3>
-                        <p>
-                            Se corrigió un error ortográfico en el panel de
-                            usuario.
-                        </p>
-                    </div>
-
-                    <div class="ticket-right">
-                        <div class="time">
-                            <i data-lucide="clock"></i>
-                            <span>2025-01-10</span>
-                        </div>
-
-                        <div class="avatar">
-                            <div class="avatar-fallback">CR</div>
-                            <span>Carlos Ruiz</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Ticket 4 -->
-                <a href="#" class="ticket">
-                    <div class="ticket-left">
-                        <div class="labels">
-                            <span class="ticket-id">TKT-009</span>
-                            <span class="status open">Abierto</span>
-                            <span class="priority medium">Media</span>
-                        </div>
-
-                        <h3>Problema con la carga de imágenes</h3>
-                        <p>
-                            Las imágenes de perfil no se muestran después de la
-                            última actualización.
-                        </p>
-                    </div>
-
-                    <div class="ticket-right">
-                        <div class="time">
-                            <i data-lucide="clock"></i>
-                            <span>2025-01-14</span>
-                        </div>
-
-                        <div class="avatar">
-                            <div class="avatar-fallback">AL</div>
-                            <span>Ana López</span>
-                        </div>
-                    </div>
-                </a>
+                <div class="tickets" id="ticketsContainer"></div>
             </div>
         </div>
 
+        <script type="module" src="../js/listTickets.js"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
         <script>
             lucide.createIcons();
+        </script>
+        <script type="module">
+            import {
+                modalTicket,
+                openTicketModal,
+                initTicketModal,
+            } from "../js/elements.js";
+
+            // Insertar el modal al DOM
+            document.body.insertAdjacentHTML("beforeend", modalTicket);
+
+            // Botón abrir modal
+            document
+                .getElementById("newTicketBtn")
+                .addEventListener("click", openTicketModal);
+
+            // Inicializar eventos del modal
+            initTicketModal();
         </script>
     </body>
 </html>
